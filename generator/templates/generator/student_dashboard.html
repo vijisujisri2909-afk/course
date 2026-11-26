@@ -1,0 +1,11 @@
+{% extends 'generator/base.html' %}
+{% block title %}Student dashboard{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Student dashboard</h1>
+  <p>Choose a course topic to study and test your knowledge.</p>
+  {% if topics %}
+    <ul>{% for topic in topics %}<li><a href="{% url 'generator:view_content' topic.pk %}">{{ topic.title }}</a></li>{% endfor %}</ul>
+  {% else %}<p>No course topics are available yet.</p>{% endif %}
+</div>
+{% endblock %}

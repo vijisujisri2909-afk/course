@@ -1,0 +1,16 @@
+{% extends 'generator/base.html' %}
+{% block title %}Generate course content{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>AI Course Content Generator</h1>
+  <p>Enter a topic to generate structured notes and key points.</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.title.errors }}
+    {{ form.title.label_tag }}
+    {{ form.title }}
+    <button type="submit">Generate content</button>
+  </form>
+</div>
+{% endblock %}

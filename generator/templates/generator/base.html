@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Course Content Generator{% endblock %}</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 0; background: #f4f7fb; color: #172033; }
+    main { max-width: 820px; margin: 3rem auto; padding: 0 1rem; }
+    .card { background: white; border-radius: 14px; padding: 2rem; box-shadow: 0 8px 30px #15294d12; }
+    h1 { margin-top: 0; } label { display: block; font-weight: 600; margin-bottom: .4rem; }
+    input { width: 100%; box-sizing: border-box; padding: .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; }
+    button { margin-top: 1rem; padding: .75rem 1.1rem; border: 0; border-radius: 8px; background: #2563eb; color: white; font-weight: 700; cursor: pointer; }
+    .errorlist, .error { color: #b91c1c; } .notes { white-space: pre-wrap; } li { margin: .5rem 0; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body><main>{% block content %}{% endblock %}</main></body>
+</html>

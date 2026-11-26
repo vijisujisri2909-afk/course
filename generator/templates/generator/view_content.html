@@ -1,0 +1,29 @@
+{% extends 'generator/base.html' %}
+{% block title %}{{ topic.title }}{% endblock %}
+{% block content %}
+<div class="card">
+  <p><a href="{% url 'generator:student_dashboard' %}">← Student dashboard</a></p>
+  <p><a href="{% url 'generator:export_pdf' topic.pk %}">Download this topic as PDF</a></p>
+  <h1>{{ topic.title }}</h1>
+  {% if summary %}<h2>Summary</h2><div class="notes">{{ summary.summary_text }}</div>{% endif %}
+  {% if content %}
+    <h2>Notes</h2><div class="notes">{{ content.notes }}</div>
+    <h2>Key points</h2>
+    <ul>{% for point in key_points %}<li>{{ point }}</li>{% empty %}<li>No key points available.</li>{% endfor %}</ul>
+  {% endif %}
+  {% if quiz %}
+    <h2>{{ quiz.title }}</h2><p>{{ quiz.description }}</p>
+    <form method="post" action="{% url 'generator:submit_quiz' quiz.pk %}">
+      {% csrf_token %}
+      {% for question in quiz.questions.all %}
+        <fieldset><legend>{{ forloop.counter }}. {{ question.question_text }}</legend>
+          {% for answer in question.answers.all %}
+            <label><input type="radio" name="question_{{ question.pk }}" value="{{ answer.pk }}"> {{ answer.answer_text }}</label><br>
+          {% endfor %}
+        </fieldset>
+      {% endfor %}
+      <button type="submit">Submit quiz</button>
+    </form>
+  {% else %}<p>No quiz is available for this topic yet.</p>{% endif %}
+</div>
+{% endblock %}

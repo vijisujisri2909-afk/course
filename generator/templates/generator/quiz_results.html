@@ -1,0 +1,15 @@
+{% extends 'generator/base.html' %}
+{% block title %}Quiz results{% endblock %}
+{% block content %}
+<div class="card">
+  <p><a href="{% url 'generator:view_content' quiz.topic_id %}">← Back to topic</a></p>
+  <h1>{{ quiz.title }} results</h1>
+  <h2>Score: {{ score }} / {{ total }}</h2>
+  <ol>{% for item in results %}
+    <li><strong>{{ item.question.question_text }}</strong><br>
+      {% if item.is_correct %}<span>Correct: {{ item.selected_answer.answer_text }}</span>
+      {% else %}<span>Incorrect. Correct answer: {{ item.correct_answer.answer_text|default:'Not available' }}</span>{% endif %}
+    </li>
+  {% endfor %}</ol>
+</div>
+{% endblock %}
