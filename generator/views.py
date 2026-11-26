@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 GEMINI_ENDPOINT = (
     'https://generativelanguage.googleapis.com/v1beta/models/'
-    'gemini-2.5-flash-preview-05-20:generateContent'
+    'gemini-2.5-flash:generateContent'
 )
 
 
